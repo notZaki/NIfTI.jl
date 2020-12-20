@@ -434,6 +434,9 @@ function read_header(io::IO)
     if header.sizeof_hdr != SIZEOF_HDR
         error("This is not a NIfTI-1 file")
     end
+    if header.scl_slope == 0
+        header.scl_slope = 1f0
+    end
     header, swapped
 end
 
