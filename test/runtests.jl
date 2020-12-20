@@ -74,6 +74,7 @@ cp(WRITE, VERIFY_WRITE)
 # download("https://nifti.nimh.nih.gov/nifti-1/data/avg152T1_LR_nifti.nii.gz", BE)
 img = niread("data/avg152T1_LR_nifti.nii.gz")
 @test size(img) == (91,109,91)
+@test maximum(img) == img.header.cal_max
 
 GC.gc() # closes mmapped files
 # Clean up
